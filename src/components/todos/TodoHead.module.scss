@@ -1,0 +1,31 @@
+.head {
+  position: relative;
+  height: 10rem;
+  padding: 2rem 1.5rem;
+  background-color: var(--theme-primary-color);
+  border-bottom-right-radius: 2rem;
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 3rem;
+    background-color: var(--theme-primary-color);
+    z-index: -1;
+  }
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+  }
+  span {
+    display: block;
+    font-size: 1rem;
+    margin-top: 1rem;
+    font-weight: 500;
+    color: #464646;
+  }
+}
