@@ -5,30 +5,60 @@
   background-color: white;
   padding: 1rem 0;
   border-radius: 0.25rem;
+
   + .item {
     border-top: 1px solid #dcdcdc;
   }
+
   .item-contents {
     display: flex;
     align-items: center;
+    width: 100%;
     > div {
+      position: relative;
       padding: 0 1rem;
+
+      &:nth-child(1) {
+        flex-grow: auto;
+      }
+
+      &:nth-child(2) {
+        flex-grow: 1;
+      }
+
+      input[type='checkbox'] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+
+      P {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      span {
+        display: block;
+        color: #646464;
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
+      }
     }
-  }
-  P {
-    font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 1.5;
-  }
-  span {
-    display: block;
-    color: #646464;
   }
 
   .btn-remove-item {
     width: 3rem;
     height: 3rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     border-radius: 0.5rem;
+  }
+
+  &.is-done {
+    .item-contents {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
   }
 }
