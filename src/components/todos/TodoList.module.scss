@@ -1,8 +1,24 @@
 .list {
   position: relative;
-  padding: 4rem 1.5rem;
+  padding: 2rem 1.5rem;
   background-color: white;
   border-top-left-radius: 2rem;
   overflow-y: auto;
-  height: calc(100vh - 16rem);
+  -webkit-overflow-scrolling: touch;
+  height: calc(100vh - var(--bottom-navs-height) - var(--todo-head-height));
+  height: calc(
+    var(--vh, 1vh) * 100 - var(--bottom-navs-height) - var(--todo-head-height)
+  );
+
+  &::-webkit-scrollbar {
+    width: 0.75rem;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2rem;
+    background-color: var(--theme-primary-color);
+    border: 2px solid white;
+  }
 }

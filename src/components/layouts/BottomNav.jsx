@@ -9,33 +9,42 @@ import {
   MdOutlineSettings,
 } from 'react-icons/md';
 
-function BottomNav() {
+function BottomNav({ onClickCreateModal }) {
   const activeStyle = {
     color: 'black',
   };
+
+  const handleCreateTodoModal = () => {
+    onClickCreateModal();
+  };
+
   return (
     <div className={classes.docker}>
       <NavLink
         to="/"
         style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        className={classes['bottom-nav']}
       >
         <MdCheckCircleOutline />
       </NavLink>
-      <NavLink to="">
+      <NavLink to="" className={classes['bottom-nav']}>
         <MdInbox />
       </NavLink>
-      <NavLink to="">
+      <NavLink to="" className={classes['bottom-nav']}>
         <MdOutlineCalendarToday />
       </NavLink>
       <NavLink
         to="/settings"
         style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        className={classes['bottom-nav']}
       >
         <MdOutlineSettings />
       </NavLink>
-      <button className={classes.button}>
-        <MdAdd />
-      </button>
+      <div className={classes['btn-create-todo']}>
+        <button onClick={handleCreateTodoModal}>
+          <MdAdd />
+        </button>
+      </div>
     </div>
   );
 }

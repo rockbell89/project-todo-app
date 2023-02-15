@@ -1,9 +1,11 @@
 .main {
   max-width: 600px;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   margin: 0 auto;
   box-shadow: 0 0 3rem rgba(0, 0, 0, 0.25);
   article {
-    height: calc(100vh - 6rem);
+    height: calc(100vh - var(--bottom-navs-height));
+    height: calc(var(--vh, 1vh) * 100 - var(--bottom-navs-height));
   }
 }

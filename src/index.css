@@ -51,9 +51,14 @@ a:focus {
 
 button {
   cursor: pointer;
+  background-color: inherit;
+  font: inherit;
 }
 
 :root {
+  --vh: 100%;
+  --todo-head-height: 10rem;
+  --bottom-navs-height: 4rem;
   --theme-primary-color: #ffcc42;
   --theme-secondary-color: #595959;
 }
