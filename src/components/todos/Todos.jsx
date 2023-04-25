@@ -1,11 +1,28 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
 import TodoCreate from './TodoCreate';
 import TodoHead from './TodoHead';
 import TodoList from './TodoList';
-import classes from './Todos.module.scss';
+import { getTodosApi } from '../../util/firebaseAPI';
+import { useDispatch } from 'react-redux';
+import { fetchTodos } from '../../store/todoReducer';
 
 function Todos({ isShowCreateModal, onClickCreateModal }) {
+  const dispatch = useDispatch();
+  const fetchData = async () => {
+    try {
+      const res = await getTodosApi();
+      if (res) {
+        dispatch(fetchTodos(res));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <TodoHead />

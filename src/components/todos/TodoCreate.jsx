@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { FaPencilAlt } from 'react-icons/fa';
-import { useTodoDispatch } from '../../context/TodoContext';
 import classes from './TodoCreate.module.scss';
-import { v4 as uuidv4 } from 'uuid';
+import { addTodos } from '../../store/todoReducer';
+import { addTodoApi } from '../../util/firebaseAPI';
+import { useDispatch } from 'react-redux';
 
 function TodoCreate({ onClickCreateModal }) {
-  const dispatch = useTodoDispatch();
+  const dispatch = useDispatch();
   const [value, setValue] = useState('');
 
   const handleInputChange = (e) => {
@@ -13,15 +14,22 @@ function TodoCreate({ onClickCreateModal }) {
     setValue(value);
   };
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
 
     const newTodo = {
-      id: uuidv4(),
       content: value,
       date: new Date(),
+      done: false,
     };
-    dispatch({ type: 'CREATE', todo: newTodo });
+    try {
+      const res = await addTodoApi(newTodo);
+      if (res) {
+        dispatch(addTodos(newTodo));
+      }
+    } catch (error) {
+      console.error(error);
+    }
     setValue(null);
     onClickCreateModal();
   };

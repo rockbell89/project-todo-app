@@ -4,15 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { TodoProvider } from './context/TodoContext';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from './store';
 
+const store = createStore(rootReducer);
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <BrowserRouter basename="project-todo-app">
-      <TodoProvider>
+      <Provider store={store}>
         <App />
-      </TodoProvider>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
